@@ -6,14 +6,18 @@
     display: flex;
     border: 1px solid black;
     flex-wrap: wrap;
-    width: 400px;
-    height: 400px;
+    width: 598px;
+    height: 598px;
     overflow: hidden;
 }
 
 .square {
+    background-color: white;
     border: 1px solid black;
-    width: calc(100% / 16 - 2px);
-    width: calc(100% / 16 - 2px);
-    margin: 1px;
+    margin: 0;
+    user-select: none;
+}
+
+.square:hover {
+    background-color: black;
 }
