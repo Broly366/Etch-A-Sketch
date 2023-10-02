@@ -86,14 +86,14 @@ clearButton.addEventListener("click", () => {
 gridInputButton.addEventListener("click", () => {
     const gridSize = parseInt(gridInput.value);
 
-        if (!isNaN(gridSize)) {
+        if(gridInput.value >= 100) {
+            alert("Noooooooo... I might explodeeeeeee!! Chose a lower number please");
+        }else if (!isNaN(gridSize)) {
             createDivGrid(gridSize);
-        } else {
+        }  else {
             alert("please enter a valid number");
-        }
+        };
     });
-
-
 
 });
 
