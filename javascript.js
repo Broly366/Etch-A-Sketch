@@ -60,20 +60,27 @@ const buttons = document.querySelector(".buttons");
 
 const header = document.querySelector(".header");
 
+const inputNumber = document.createElement("p");
+inputNumber.textContent = "Input a number!";
+
+buttons.appendChild(inputNumber);
+
+const gridInput = document.createElement("input");
+gridInput.classList.add("gridInput")
+gridInput.value = "";
+gridInput.style.backgroundColor = "white";
+
+buttons.appendChild(gridInput);
+
 const gridInputButton = document.createElement("button");
 gridInputButton.textContent = "Update grid";
 
 buttons.appendChild(gridInputButton);
 
-const gridInput = document.createElement("input");
-gridInput.classList.add("gridInput")
-gridInput.value = "";
 
-buttons.appendChild(gridInput);
 
 const clearButton = document.createElement("button");
 clearButton.textContent = "Clear";
-
 buttons.appendChild(clearButton);
 
 clearButton.addEventListener("click", () => {
@@ -86,7 +93,7 @@ clearButton.addEventListener("click", () => {
 gridInputButton.addEventListener("click", () => {
     const gridSize = parseInt(gridInput.value);
 
-        if(gridInput.value >= 100) {
+        if(gridInput.value > 100) {
             alert("Noooooooo... I might explodeeeeeee!! Chose a lower number please");
         }else if (!isNaN(gridSize)) {
             createDivGrid(gridSize);
