@@ -19,9 +19,6 @@
     user-select: none;
 }
 
-.square:hover {
-    background-color: black;
-}
 
 button {
     background-color: white;
@@ -52,4 +49,5 @@ button {
 .center {
     display: flex;
 }
+
 

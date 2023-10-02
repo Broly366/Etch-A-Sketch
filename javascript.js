@@ -8,18 +8,28 @@ const squares = document.querySelectorAll(".square");
 
 let isMouseDown = false;
 
-
+let isEraserMode = false;
 
 container.addEventListener("mousedown", (event) => {
     if (event.target.classList.contains("square")) {
         isMouseDown = true;
-        event.target.style.backgroundColor = "black";
+        if (isEraserMode) {
+            squares.forEach((square) => {
+                square.style.backgroundColor = "white";
+            });
+        } else {
+            event.target.style.backgroundColor = "black";
+        }
     }
 });
 
 container.addEventListener("mouseover", (event) => {
-    if (isMouseDown && event.target.classList.contains("square") && event.target.style.backgroundColor !== "black") {
-        event.target.style.backgroundColor = "black";
+    if (isMouseDown && event.target.classList.contains("square")) {
+        if (isEraserMode) {
+            event.target.style.backgroundColor = "white";
+        } else {
+            event.target.style.backgroundColor = "black";
+        }
     }
 });
 
@@ -60,14 +70,10 @@ const buttons = document.querySelector(".buttons");
 
 const header = document.querySelector(".header");
 
-const inputNumber = document.createElement("p");
-inputNumber.textContent = "Input a number!";
-
-buttons.appendChild(inputNumber);
-
 const gridInput = document.createElement("input");
 gridInput.classList.add("gridInput")
 gridInput.value = "";
+gridInput.placeholder = "Enter a number";
 gridInput.style.backgroundColor = "white";
 
 buttons.appendChild(gridInput);
@@ -94,7 +100,7 @@ gridInputButton.addEventListener("click", () => {
     const gridSize = parseInt(gridInput.value);
 
         if(gridInput.value > 100) {
-            alert("Noooooooo... I might explodeeeeeee!! Chose a lower number please");
+            alert("Noooooooo... I might explodeeeeeee!! Enter a number lower than 100, Please:)");
         }else if (!isNaN(gridSize)) {
             createDivGrid(gridSize);
         }  else {
@@ -102,5 +108,15 @@ gridInputButton.addEventListener("click", () => {
         };
     });
 
+
+const eraserBotton = document.createElement("button");
+eraserBotton.textContent = "Eraser"
+
+buttons.appendChild(eraserBotton);
+    
+eraserBotton.addEventListener("click", () => {
+    isEraserMode = !isEraserMode;
+    eraserBotton.classList.toggle("active", isEraserMode);
+});
 });
 
